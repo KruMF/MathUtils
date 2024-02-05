@@ -1,20 +1,15 @@
 package angleTest;
 
-import mathUtils.coordinates.Cartesian2;
-
-import consoleUtils.ConsoleBuffer;
-import static consoleUtils.ConsoleUtils.printLine;
-import static consoleUtils.ConsoleUtils.separatorString;
-import static consoleUtils.NumberFormatter.doubleToString;
-
 import org.jetbrains.annotations.NotNull;
 
+import static consoleUtils.SimplePrinting.printLine;
+import static consoleUtils.stringTools.NumberFormatter.doubleToString;
+
+import mathUtils.coordinates.Cartesian2;
 
 //TODO: finish this and add javadocs
 public class AngleTest {
     private static final String TEST_NAME = "Angle test";
-
-    private static ConsoleBuffer consoleBuffer = new ConsoleBuffer();
 
     /**
      * Main method of this test.
@@ -22,7 +17,7 @@ public class AngleTest {
      * @param args Command-line arguments (none needed nor supported).
      */
     public static void main(String[] args) {
-        printLine("Angle test:");
+        printLine(TEST_NAME + ":");
         int dp = 2;
         double val = 1.0;
         addCartesian2D(0, 0, dp);   // center
@@ -37,16 +32,15 @@ public class AngleTest {
     }
 
     private static void addCartesian2D(double x, double y, int decimalPlaces) {
-        consoleBuffer.addLine(separatorString());
+        printLine(null);
         @NotNull Cartesian2 cartesian = new Cartesian2(x, y);
         double @NotNull [] cartesianArray = cartesian.toArray();
-        consoleBuffer.addLine("Cartesian: " +
+        printLine("Cartesian: " +
                 "x " + doubleToString(cartesianArray[0], decimalPlaces) + "; " +
                 "y " + doubleToString(cartesianArray[1], decimalPlaces));
         double @NotNull [] polarArray = cartesian.toPolar().toArray();
-        consoleBuffer.addLine("Polar: " +
+        printLine("Polar: " +
                 "r " + doubleToString(polarArray[0], decimalPlaces) + "; " +
                 "phi " + doubleToString(Math.toDegrees(polarArray[1]), decimalPlaces));
-        consoleBuffer.print();
     }
 }
